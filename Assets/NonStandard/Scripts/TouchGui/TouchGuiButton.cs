@@ -1,4 +1,4 @@
-namespace NonStandard.TouchGui {
+﻿namespace NonStandard.TouchGui {
 	public class TouchGuiButton : TouchColliderSensitive {
 		public Inputs.KBind.EventSet eventSet;
 
