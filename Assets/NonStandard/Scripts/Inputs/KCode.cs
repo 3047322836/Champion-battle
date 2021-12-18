@@ -1,4 +1,4 @@
-﻿namespace NonStandard.Inputs {
+namespace NonStandard.Inputs {
   public static class KCodeExtension {
 	public static KCode Normalized(this KCode k) {
 		switch (k) {

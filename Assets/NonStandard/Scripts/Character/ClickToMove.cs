@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 
 namespace NonStandard.Character {
 	public class ClickToMove : MonoBehaviour {

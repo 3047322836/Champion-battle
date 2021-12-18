@@ -1,4 +1,4 @@
-﻿// http://codegiraffe.com/unity/NonStandardPlayer.unitypackage
+// http://codegiraffe.com/unity/NonStandardPlayer.unitypackage
 using NonStandard.Inputs;
 using UnityEngine;
 using UnityEngine.Events;
