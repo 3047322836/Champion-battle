@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 828651432}
   - component: {fileID: 828651431}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: DeckOfCards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -318,13 +318,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OriginalCards:
-  - {fileID: 3480880006947420171, guid: ebe80d76851ca4c16a99f9eef950d005, type: 3}
-  - {fileID: 3480880006947420171, guid: 8d73b0873eaf34ceaafbe6f31c65b526, type: 3}
-  - {fileID: 3480880006947420171, guid: 8e6c78c4c8ec043f5a6880577d2f9770, type: 3}
-  - {fileID: 3480880006947420171, guid: 031276d76cc544ce08d2898d20e68fbb, type: 3}
+  - {fileID: 7050516934463429008, guid: df70e077734a6e44d86ba242b6187f5e, type: 3}
+  - {fileID: 7370882078780976910, guid: 07bf9066f3a9c3e4d8aa1c4d2ab45c77, type: 3}
+  - {fileID: 4069357395701479463, guid: d5a3e9f4a3019a444b63645e75635b1b, type: 3}
+  - {fileID: 4132401558532500482, guid: b4d697ef162d7854b8c96afc1dc6e2cc, type: 3}
   cards: []
   count: 4
   canvas: {fileID: 338370676}
+  image: {fileID: 0}
 --- !u!4 &828651432
 Transform:
   m_ObjectHideFlags: 0
