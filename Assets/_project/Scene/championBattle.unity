@@ -323,6 +323,11 @@ MonoBehaviour:
   - {fileID: 4069357395701479463, guid: d5a3e9f4a3019a444b63645e75635b1b, type: 3}
   - {fileID: 4132401558532500482, guid: b4d697ef162d7854b8c96afc1dc6e2cc, type: 3}
   cards: []
+  icons:
+  - {fileID: 21300000, guid: af45501752eb54a809c4e7a6bdb8f3f3, type: 3}
+  - {fileID: 21300000, guid: de084f97ae06a448780f35cbbb21e133, type: 3}
+  - {fileID: 21300000, guid: f8ded2d52f1d64931b510c7228b0cca8, type: 3}
+  - {fileID: 21300000, guid: a76edff8227b940ddbccba8fbf6f275d, type: 3}
   count: 4
   canvas: {fileID: 338370676}
   image: {fileID: 0}
