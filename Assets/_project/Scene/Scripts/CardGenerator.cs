@@ -7,6 +7,8 @@ public class CardGenerator : MonoBehaviour
     public BasicCard basicCard;
     [Tooltip("how many to make?"), ContextMenuItem("create some cards", "generate")] // give count two properties
     public int count = 3;
+    public Sprite[] images;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,6 +57,9 @@ public class CardGenerator : MonoBehaviour
             BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
             BC.cardName = randomString(10);
             BC.description = randomSentence(10, 1, 10);
+            int randomNum = Random.Range(0, images.Length);
+            BC.image = images[randomNum];
+
             BC.ApplyUI();
         }
     }
