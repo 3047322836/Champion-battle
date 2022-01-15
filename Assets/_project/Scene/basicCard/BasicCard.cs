@@ -21,7 +21,7 @@ public class BasicCard : MonoBehaviour
     public Image img_icon;
     public TMP_Text cardNum;
     // Start is called before the first frame update
-    void ApplyUI()
+    public void ApplyUI()
     {
         txt_title.text = cardName;
         txt_description.text = description;
