@@ -57,5 +57,10 @@ namespace cards
         {
             onPlay.Invoke();
         }
+
+        public void requestSelection(int n)
+        {
+            CardSelector.setExtraSelection(n);
+        }
     }
 } 

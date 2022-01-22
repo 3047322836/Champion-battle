@@ -3,13 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using cards;
+using System;
+
 public class CardSelector : MonoBehaviour
 {
     public BasicCard mainSelected;
+    public BasicCard[] additionalSelected;
+    private static CardSelector _instance;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _instance = this;
+
+    }
+    public static void setExtraSelection(int n)
+    {
+        _instance.additionalSelected = new BasicCard[n];
     }
 
     // Update is called once per frame
@@ -22,16 +31,40 @@ public class CardSelector : MonoBehaviour
             card = go.GetComponent<BasicCard>();
             if (card != null && card != mainSelected)
             {
-                if (mainSelected != null)
+                
+                if (additionalSelected.Length == 0)
                 {
-                    mainSelected.deSelected.Invoke();
-                }
-                mainSelected = card;
-                Debug.Log("New Selections " + mainSelected);
-                if (mainSelected != null)
+                    if (mainSelected != null)
+                    {
+                        mainSelected.deSelected.Invoke();
+                    }
+                    mainSelected = card;
+
+                    Debug.Log("New Selections " + mainSelected);
+                    if (mainSelected != null)
+                    {
+                        mainSelected.onSelected.Invoke();
+                    }
+                } else
                 {
-                    mainSelected.onSelected.Invoke();
+                    int nextIndex = Array.IndexOf(additionalSelected, card);
+                    if (nextIndex >= 0 )
+                    {
+                        if (Input.GetMouseButtonDown(0))
+                        {
+                            additionalSelected[nextIndex] = null;
+                        }
+                    } else
+                    {
+                        nextIndex = Array.IndexOf(additionalSelected, null);
+                        if (nextIndex >= 0)
+                        {
+                            additionalSelected[nextIndex] = card;
+                        }
+                    }
                 }
+                
+                
             }
         }
     }
