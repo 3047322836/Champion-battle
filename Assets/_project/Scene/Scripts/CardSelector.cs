@@ -21,50 +21,36 @@ public class CardSelector : MonoBehaviour
         _instance.additionalSelected = new BasicCard[n];
     }
 
+    void SelectSingleCard(BasicCard card) {
+        mainSelected?.deSelected.Invoke();
+        mainSelected = card;
+        Debug.Log("New Selections " + mainSelected);
+        mainSelected?.onSelected.Invoke();
+    }
+    void MultiCardSelectionLogic(BasicCard card) {
+        int nextIndex = Array.IndexOf(additionalSelected, card);
+        if (nextIndex >= 0) {
+            if (Input.GetMouseButtonDown(0)) {
+                additionalSelected[nextIndex] = null;
+            }
+        } else {
+            nextIndex = Array.IndexOf(additionalSelected, null);
+            if (nextIndex >= 0) {
+                additionalSelected[nextIndex] = card;
+            }
+        }
+    }
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         BasicCard card = null;
         GameObject go = EventSystem.current.currentSelectedGameObject;
-        if (go)
-        {
-            card = go.GetComponent<BasicCard>();
-            if (card != null && card != mainSelected)
-            {
-                
-                if (additionalSelected.Length == 0)
-                {
-                    if (mainSelected != null)
-                    {
-                        mainSelected.deSelected.Invoke();
-                    }
-                    mainSelected = card;
-
-                    Debug.Log("New Selections " + mainSelected);
-                    if (mainSelected != null)
-                    {
-                        mainSelected.onSelected.Invoke();
-                    }
-                } else
-                {
-                    int nextIndex = Array.IndexOf(additionalSelected, card);
-                    if (nextIndex >= 0 )
-                    {
-                        if (Input.GetMouseButtonDown(0))
-                        {
-                            additionalSelected[nextIndex] = null;
-                        }
-                    } else
-                    {
-                        nextIndex = Array.IndexOf(additionalSelected, null);
-                        if (nextIndex >= 0)
-                        {
-                            additionalSelected[nextIndex] = card;
-                        }
-                    }
-                }
-                
-                
+        if (go == null) { return; }
+        card = go.GetComponent<BasicCard>();
+        if (card != null && card != mainSelected) {
+            if (additionalSelected.Length == 0) {
+                SelectSingleCard(card);
+            } else {
+                MultiCardSelectionLogic(card);
             }
         }
     }
