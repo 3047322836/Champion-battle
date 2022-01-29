@@ -8,7 +8,7 @@ using System;
 public class CardSelector : MonoBehaviour
 {
     public BasicCard mainSelected;
-    public BasicCard[] additionalSelected;
+    public BasicCard[] extraThingsToSelect;
     private static CardSelector _instance;
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,7 @@ public class CardSelector : MonoBehaviour
     }
     public static void setExtraSelection(int n)
     {
-        _instance.additionalSelected = new BasicCard[n];
+        _instance.extraThingsToSelect = new BasicCard[n];
     }
 
     void SelectSingleCard(BasicCard card) {
@@ -27,30 +27,39 @@ public class CardSelector : MonoBehaviour
         Debug.Log("New Selections " + mainSelected);
         mainSelected?.onSelected.Invoke();
     }
+
     void MultiCardSelectionLogic(BasicCard card) {
-        int nextIndex = Array.IndexOf(additionalSelected, card);
-        if (nextIndex >= 0) {
-            additionalSelected[nextIndex] = null;
+        int whereThisCardIsInTheSelection = Array.IndexOf(extraThingsToSelect, card);
+        bool thisCardIsAlreadySelected = whereThisCardIsInTheSelection >= 0;
+        if (thisCardIsAlreadySelected) {
+            extraThingsToSelect[whereThisCardIsInTheSelection] = null; // unselects the card
         } else {
-            nextIndex = Array.IndexOf(additionalSelected, null);
-            if (nextIndex >= 0) {
-                additionalSelected[nextIndex] = card;
+            if (card == mainSelected) {
+                SelectSingleCard(null);
+                return;
+			}
+            int emptySlotInSelection = Array.IndexOf(extraThingsToSelect, null);
+            if (emptySlotInSelection >= 0) {
+                extraThingsToSelect[emptySlotInSelection] = card;
             }
         }
     }
+
     bool IsLeftMouseButtonClicked() { return Input.GetMouseButtonDown(0); }
+
     void DoSelectionLogic() {
         GameObject go = EventSystem.current.currentSelectedGameObject;
         if (go == null) { return; }
         BasicCard card = go.GetComponent<BasicCard>();
-        if (card != null) {
-            if (additionalSelected.Length == 0) {
+        if (card) {
+            if (extraThingsToSelect.Length == 0) {
                 SelectSingleCard(card);
             } else {
                 MultiCardSelectionLogic(card);
             }
         }
     }
+
     void Update() {
 		if (IsLeftMouseButtonClicked()) {
             DoSelectionLogic();
