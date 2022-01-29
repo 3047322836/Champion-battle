@@ -25,7 +25,10 @@ namespace cards
         public TMP_Text cardNum;
         public UnityEvent onSelected;
         public UnityEvent deSelected;
-
+        public bool selected;
+        public bool isGrowing;
+        public float speed = 0.1f;
+        public float selectedSize = 1.01f;
 
         public virtual void ApplyUI()
         {
@@ -43,9 +46,29 @@ namespace cards
         }
 
         // Update is called once per frame
-        void Update()
+        protected virtual void Update()
         {
-
+           if (selected)
+            {
+                if (!isGrowing)
+                {
+                    transform.localScale -= Vector3.one * Time.deltaTime * speed;
+                    if (transform.localScale.x <= 1)
+                    {
+                        isGrowing = true;
+                    }
+                }
+                else
+                {
+                    transform.localScale += Vector3.one * Time.deltaTime * speed;
+                    if (transform.localScale.x >= selectedSize)
+                    {
+                        isGrowing = false;
+                    }
+                }
+     
+            }
+           
         }
 
         public void ChangeHP()
@@ -61,6 +84,16 @@ namespace cards
         public void requestSelection(int n)
         {
             CardSelector.setExtraSelection(n);
+        }
+        public void Select()
+        {
+            transform.localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            selected = true;
+        }
+        public void Unselect()
+        {
+            transform.localScale = Vector3.one;
+            selected = false;
         }
     }
 } 

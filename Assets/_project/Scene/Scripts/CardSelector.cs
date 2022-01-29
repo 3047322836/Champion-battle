@@ -23,9 +23,11 @@ public class CardSelector : MonoBehaviour
 
     void SelectSingleCard(BasicCard card) {
         mainSelected?.deSelected.Invoke();
+        mainSelected?.Unselect();
         mainSelected = card;
         Debug.Log("New Selections " + mainSelected);
         mainSelected?.onSelected.Invoke();
+        mainSelected?.Select();
     }
 
     void MultiCardSelectionLogic(BasicCard card) {
@@ -65,4 +67,7 @@ public class CardSelector : MonoBehaviour
             DoSelectionLogic();
 		}
     }
+    
 }
+
+
