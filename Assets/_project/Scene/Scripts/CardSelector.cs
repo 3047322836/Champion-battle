@@ -30,9 +30,7 @@ public class CardSelector : MonoBehaviour
     void MultiCardSelectionLogic(BasicCard card) {
         int nextIndex = Array.IndexOf(additionalSelected, card);
         if (nextIndex >= 0) {
-            if (Input.GetMouseButtonDown(0)) {
-                additionalSelected[nextIndex] = null;
-            }
+            additionalSelected[nextIndex] = null;
         } else {
             nextIndex = Array.IndexOf(additionalSelected, null);
             if (nextIndex >= 0) {
@@ -40,18 +38,22 @@ public class CardSelector : MonoBehaviour
             }
         }
     }
-    // Update is called once per frame
-    void Update() {
-        BasicCard card = null;
+    bool IsLeftMouseButtonClicked() { return Input.GetMouseButtonDown(0); }
+    void DoSelectionLogic() {
         GameObject go = EventSystem.current.currentSelectedGameObject;
         if (go == null) { return; }
-        card = go.GetComponent<BasicCard>();
-        if (card != null && card != mainSelected) {
+        BasicCard card = go.GetComponent<BasicCard>();
+        if (card != null) {
             if (additionalSelected.Length == 0) {
                 SelectSingleCard(card);
             } else {
                 MultiCardSelectionLogic(card);
             }
         }
+    }
+    void Update() {
+		if (IsLeftMouseButtonClicked()) {
+            DoSelectionLogic();
+		}
     }
 }
