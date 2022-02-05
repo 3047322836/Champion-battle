@@ -5,8 +5,24 @@ namespace cards
 {
     public class ChampionCard : BasicCard
     {
-        public int hp = 3;
+        [SerializeField] private int _hp = 5;
         public int maxHP = 5;
+
+        public int hp
+        {
+            get
+            {
+                return _hp;
+            }
+            set
+            {
+                _hp = value;
+                cardNum.text = _hp + "/" + maxHP;
+                //can set limitation of the hp here
+                //wrap logic here
+            }
+        }
+        
 
         public override void ApplyUI()
         {
@@ -14,7 +30,7 @@ namespace cards
             txt_description.text = description;
             img_image.sprite = image;
             //img_icon.sprite = icon;
-            cardNum.text = hp + "/" + maxHP;
+            cardNum.text = _hp + "/" + maxHP;
 
         }
 

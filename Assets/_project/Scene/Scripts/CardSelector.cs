@@ -10,6 +10,19 @@ public class CardSelector : MonoBehaviour
     public BasicCard mainSelected;
     public BasicCard[] extraThingsToSelect;
     private static CardSelector _instance;
+
+    //it's basicly a function
+    // => means "execute this instead"
+    //public static BasicCard[] extraSelectedCard => _instance.extraThingsToSelect;
+
+    public static BasicCard[] extraSelectedCard
+    {
+        get
+        {
+            return _instance.extraThingsToSelect;
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
