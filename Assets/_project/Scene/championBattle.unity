@@ -1002,7 +1002,7 @@ MonoBehaviour:
   _animationDuration: 3
   selectedColor: {r: 1, g: 1, b: 1, a: 1}
   selectedStyle: 0
-  hp: 5
+  _hp: 5
   maxHP: 5
 --- !u!114 &450854072
 MonoBehaviour:
