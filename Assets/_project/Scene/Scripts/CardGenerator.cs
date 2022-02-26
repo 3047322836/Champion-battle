@@ -16,7 +16,7 @@ public class CardGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        generate();
         
     }
 
@@ -52,21 +52,6 @@ public class CardGenerator : MonoBehaviour
     };
     public void generate()
     {
-        /*
-        for(int i = 0; i < count; i++)
-        {
-            GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
-            GO.transform.SetParent(this.transform); // top component, make new object a child
-            BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
-            BC.cardName = randomString(10);
-            BC.description = randomSentence(10, 1, 10);
-            int randomNum = Random.Range(0, images.Length);
-            BC.image = images[randomNum];
-
-            BC.ApplyUI();
-        }
-        */
-
 
         for (int i = 0; i < cards.cards.Length; i++)
         {
@@ -86,9 +71,11 @@ public class CardGenerator : MonoBehaviour
                 BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
                 BC.cardName = cardInfo.name;
                 BC.description = cardInfo.description;
-                BC.image = images[suitConverter(suit)];//same as the line below
-                BC.image = images[suitConverterDictionary[suit]];
+                BC.icon = images[suitConverter(suit)];//same as the line below
+                BC.icon = images[suitConverterDictionary[suit]];
+                BC.num = cardnumbers[n].ToString();
                 BC.ApplyUI();
+                BC.transform.position = new Vector3(suitIndex * 100, n * 100, 0);
             }
         }
     }

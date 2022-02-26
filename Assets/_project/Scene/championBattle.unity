@@ -2411,7 +2411,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: de084f97ae06a448780f35cbbb21e133, type: 3}
   - {fileID: 21300000, guid: f8ded2d52f1d64931b510c7228b0cca8, type: 3}
   - {fileID: 21300000, guid: a76edff8227b940ddbccba8fbf6f275d, type: 3}
-  cards: {fileID: 0}
+  cards: {fileID: 1447868638}
 --- !u!114 &1447868634
 MonoBehaviour:
   m_ObjectHideFlags: 0
