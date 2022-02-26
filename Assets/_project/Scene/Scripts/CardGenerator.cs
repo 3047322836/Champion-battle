@@ -11,6 +11,8 @@ public class CardGenerator : MonoBehaviour
     public Sprite[] images;
     public CardRead cards;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,7 @@ public class CardGenerator : MonoBehaviour
     {
         
     }
-
+    /*
     public static string randomString(int length)
     {
         string str = "";
@@ -33,7 +35,7 @@ public class CardGenerator : MonoBehaviour
         }
         return str;
     }
-
+    
     public static string randomSentence(int wordCount, int minWordLength, int maxWordLength)
     {
         string str = "";
@@ -49,9 +51,53 @@ public class CardGenerator : MonoBehaviour
 
         return str;
     }
+    */
 
+
+
+    public void suitConverter(string dictionary)
+    {
+        List<int> suitt = new List<int>();
+        for(int j = 0; j < dictionary.Length; j++)
+        {
+            char x = dictionary[j];
+            switch(x)
+            {
+                case ':':
+                case ' ':
+                case 'A':
+                case '2':
+                case '3':
+                case '4':
+                case '5':
+                case '6':
+                case '7':
+                case '8':
+                case '9':
+                case '1':
+                case 'J':
+                case 'Q':
+                case 'K':
+                    continue;
+
+                case 'C':
+                    suitt.Add(0);
+                    break;
+                case 'D':
+                    suitt.Add(1);
+                    break;
+                case 'H':
+                    suitt.Add(2);
+                    break;
+                case 'S':
+                    suitt.Add(3);
+                    break;
+            }
+        }
+    }
     public void generate()
     {
+        /*
         for(int i = 0; i < count; i++)
         {
             GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
@@ -64,12 +110,20 @@ public class CardGenerator : MonoBehaviour
 
             BC.ApplyUI();
         }
-        for(int i = 0; i < cards.cards.Length; i++)
+        */
+
+        GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
+        GO.transform.SetParent(this.transform); // top component, make new object a child
+        BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
+        for (int i = 0; i < cards.cards.Length; i++)
         {
-            GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
-            GO.transform.SetParent(this.transform); // top component, make new object a child
-            BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
             BC.cardName = cards.cards[i].name;
+            BC.description = cards.cards[i].description;
+            for (int k = 0; k < cards.cards[i].cardCount; k++)
+            {
+                BC.image = images[i];
+                BC.ApplyUI();
+            }
         }
 
     }

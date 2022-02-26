@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +11,7 @@ public class CardRead : MonoBehaviour
         public string type;
         public string description;
         public int HP;
+        public int cardCount;
         public enum card { A, _2, _3, _4, _5, _6, _7, _8, _9, _10, J, Q, K}
         [System.Serializable]public struct Listing
         {
@@ -18,12 +20,16 @@ public class CardRead : MonoBehaviour
         }
         public List<Listing> list = new List<Listing>();
 
-        public Dictionary<char, List<int>> dictionary;
+        public Dictionary<string, List<card>> dictionary;
+        //public string dictionary;
         public CardInfo(string name, string type, string description, string HP, string cardCount, string suits, string dictionary) {
             this.name = name;
             this.type = type;
             this.description = description;
-            switch(HP)
+            this.cardCount = Int32.Parse(cardCount);
+            //this.dictionary = dictionary;
+            
+            switch (HP)
             {
                 case "n/a":
                 case "":
@@ -89,6 +95,12 @@ public class CardRead : MonoBehaviour
                         break;
                 }
             }
+            for (int i = 0; i<list.Count; i++)
+            {
+                string suit = list[i].suit;
+                this.dictionary[suit] = list[i].list;
+            }
+            Debug.Log(this.dictionary["H"].Count);
         }
     }
     public CardInfo[] cards = new CardInfo[]

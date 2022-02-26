@@ -2409,8 +2409,8 @@ MonoBehaviour:
   images:
   - {fileID: 21300000, guid: af45501752eb54a809c4e7a6bdb8f3f3, type: 3}
   - {fileID: 21300000, guid: de084f97ae06a448780f35cbbb21e133, type: 3}
-  - {fileID: 21300000, guid: 5329fb8b5ad06431d91e9f39a2efdd1c, type: 3}
-  - {fileID: 21300000, guid: 744cb54b39ace9d4997947dc74cf34d1, type: 3}
+  - {fileID: 21300000, guid: f8ded2d52f1d64931b510c7228b0cca8, type: 3}
+  - {fileID: 21300000, guid: a76edff8227b940ddbccba8fbf6f275d, type: 3}
   cards: {fileID: 0}
 --- !u!114 &1447868634
 MonoBehaviour:
@@ -2514,6 +2514,7 @@ MonoBehaviour:
       playing section to deal 1 point of damage to him or her. You can only play
       1 [attack] in your playing section.
     HP: -1
+    cardCount: 0
     list:
     - suit: S
       list: 06000000070000000700000008000000080000000900000009000000
@@ -2528,6 +2529,7 @@ MonoBehaviour:
     description: use [defense] when someone plays [attack] to you, [defense] can
       offset the effect of [attack].
     HP: 0
+    cardCount: 0
     list:
     - suit: H
       list: 01000000010000000c000000
@@ -2539,6 +2541,7 @@ MonoBehaviour:
       1 HP to yourself. Also only when one champion\u2019s HP becomes equal or less
       than 0, play [potion of blood] to restore 1 HP to that champion."
     HP: 1
+    cardCount: 0
     list:
     - suit: H
       list: 0200000003000000050000000600000007000000080000000b000000
@@ -2551,6 +2554,7 @@ MonoBehaviour:
       of rage] in your playing section. Also when your HP is equal or less than 0,
       you can play [potion of rage] to restore 1 HP for you.
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 02000000
@@ -2563,6 +2567,7 @@ MonoBehaviour:
     description: use [guard] to offset the effect of a skill card, or play [guard]
       to offset the effect of another [guard].
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 0c000000
@@ -2573,6 +2578,7 @@ MonoBehaviour:
     description: "use [destroy] to another champion in your playing section to discard
       a card in that champion\u2019s area."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 02000000030000000b000000
@@ -2586,6 +2592,7 @@ MonoBehaviour:
       or less than 1 in your playing section to get a card in that champion\u2019s
       area."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 02000000030000000a000000
@@ -2598,6 +2605,7 @@ MonoBehaviour:
       That champion starts first. The champion who does not play [attack] takes 1
       point of damage from another champion in duel.
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 00000000
@@ -2610,6 +2618,7 @@ MonoBehaviour:
     description: use [zombie siege] in your playing section, every champion except
       you have to play a [attack] or take 1 point of damage from you.
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 060000000c000000
@@ -2620,6 +2629,7 @@ MonoBehaviour:
     description: use [arrows rain] in your playing section, every champion except
       you have to play a [defense] or take 1 point of damage from you.
     HP: 0
+    cardCount: 0
     list:
     - suit: H
       list: 00000000
@@ -2627,6 +2637,7 @@ MonoBehaviour:
     type: skill
     description: use [replenish] to yourself in your playing section, draw 2 cards.
     HP: 0
+    cardCount: 0
     list:
     - suit: H
       list: 0600000007000000080000000a000000
@@ -2635,6 +2646,7 @@ MonoBehaviour:
     description: use [Spring is coming] in your playing section, every champion restores
       1 HP.
     HP: 0
+    cardCount: 0
     list:
     - suit: H
       list: 00000000
@@ -2644,6 +2656,7 @@ MonoBehaviour:
       cards in the deck (x is the number of alive champions), start with you, every
       champion picks up one card from these cards you showed up in order.
     HP: 0
+    cardCount: 0
     list:
     - suit: H
       list: 0200000003000000
@@ -2654,6 +2667,7 @@ MonoBehaviour:
       Play an [attack] to another champion in his/her range you select; 2. Give his/her
       weapon to you.'
     HP: 0
+    cardCount: 0
     list:
     - suit: C
       list: 0b0000000c000000
@@ -2665,6 +2679,7 @@ MonoBehaviour:
       a divination. If the result is not H\uFE0F, discards this [freeze] and skip
       the playing section."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 05000000
@@ -2680,6 +2695,7 @@ MonoBehaviour:
       a divination. If the result is not C\uFE0F, discards this [starve] and skip
       the drawing section"
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 0900000001000000
@@ -2694,6 +2710,7 @@ MonoBehaviour:
       in his/her next player\u2019s divination area; Otherwise, he/she takes 3 points
       of damages."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 00000000
@@ -2704,6 +2721,7 @@ MonoBehaviour:
     description: 'weapon, attack range: 3, ability: After using [attack] to damage
       one champion, you can discard one card from his/her equipment area.'
     HP: 0
+    cardCount: 0
     list:
     - suit: H
       list: 04000000
@@ -2712,6 +2730,7 @@ MonoBehaviour:
     description: 'armor, ability: locked, when you take more than 1 point of damage,
       you ignore the overflow damage.'
     HP: 0
+    cardCount: 0
     list:
     - suit: C
       list: 01000000
@@ -2720,6 +2739,7 @@ MonoBehaviour:
     description: 'weapon, attack range: 2, ability: You can use two cards in your
       hand as an [attack] to play or use.'
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 0b000000
@@ -2728,6 +2748,7 @@ MonoBehaviour:
     description: "weapon, attack range: 5, ability: locked, when you are using [attack]
       to a champion, you ignore that champion\u2019s armor."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 05000000
@@ -2737,6 +2758,7 @@ MonoBehaviour:
       by [defense], you can discard two cards from your hand to make this [attack]
       still do damage.'
     HP: 0
+    cardCount: 0
     list:
     - suit: D
       list: 04000000
@@ -2746,6 +2768,7 @@ MonoBehaviour:
       make a divination. If the result is H\uFE0F or D\uFE0F, you can use or play
       a [defense] without consuming any card in your hand."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 01000000
@@ -2756,6 +2779,7 @@ MonoBehaviour:
     description: 'weapon, attack range: 1, ability: locked, you can play an infinite
       number of [attack] in your playing section.'
     HP: 0
+    cardCount: 0
     list:
     - suit: C
       list: 00000000
@@ -2767,6 +2791,7 @@ MonoBehaviour:
       champion, and the [attack] you played is the last card in your hand, you can
       gain two extra targets for your [attack].'
     HP: 0
+    cardCount: 0
     list:
     - suit: D
       list: 0b000000
@@ -2776,6 +2801,7 @@ MonoBehaviour:
       to another champion, if he or she doesn\u2019t have any card in his or her
       hand, the [attack] you play will deal 1 point more damage to that champion."
     HP: 0
+    cardCount: 0
     list:
     - suit: S
       list: 00000000
@@ -2978,7 +3004,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1611569510396027350, guid: 89d4c2a448957824bb9112d8803b6f26, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89d4c2a448957824bb9112d8803b6f26, type: 3}
@@ -3599,7 +3625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1861995740
 RectTransform:
   m_ObjectHideFlags: 0
