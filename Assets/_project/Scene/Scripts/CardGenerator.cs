@@ -112,17 +112,29 @@ public class CardGenerator : MonoBehaviour
         }
         */
 
-        GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
-        GO.transform.SetParent(this.transform); // top component, make new object a child
-        BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
+
         for (int i = 0; i < cards.cards.Length; i++)
         {
-            BC.cardName = cards.cards[i].name;
-            BC.description = cards.cards[i].description;
+
+            /*
             for (int k = 0; k < cards.cards[i].cardCount; k++)
             {
-                BC.image = images[i];
-                BC.ApplyUI();
+
+            }
+            */
+            for (int suitIndex = 0; suitIndex < cards.cards[i].list.Count; suitIndex++)
+            {
+                List<CardRead.CardInfo.card> cardnumbers = cards.cards[i].list[suitIndex].list;
+                for (int n = 0; n < cardnumbers.Count; ++n)
+                {
+                    GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
+                    GO.transform.SetParent(this.transform); // top component, make new object a child
+                    BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
+                    BC.cardName = cards.cards[i].name;
+                    BC.description = cards.cards[i].description;
+                    BC.image = images[i];
+                    BC.ApplyUI();
+                }
             }
         }
 
