@@ -20,7 +20,7 @@ public class CardRead : MonoBehaviour
         }
         public List<Listing> list = new List<Listing>();
 
-        public Dictionary<string, List<card>> dictionary;
+        //public Dictionary<string, List<card>> dictionary = new Dictionary<string, List<card>>();
         //public string dictionary;
         public CardInfo(string name, string type, string description, string HP, string cardCount, string suits, string dictionary) {
             this.name = name;
@@ -95,12 +95,12 @@ public class CardRead : MonoBehaviour
                         break;
                 }
             }
-            for (int i = 0; i<list.Count; i++)
-            {
-                string suit = list[i].suit;
-                this.dictionary[suit] = list[i].list;
-            }
-            Debug.Log(this.dictionary["H"].Count);
+            //for (int i = 0; i < list.count; i++)
+            //{
+            //    string suit = list[i].suit;
+            //    this.dictionary[suit] = list[i].list;
+            //}
+            //debug.log(this.dictionary["h"].count);
         }
     }
     public CardInfo[] cards = new CardInfo[]

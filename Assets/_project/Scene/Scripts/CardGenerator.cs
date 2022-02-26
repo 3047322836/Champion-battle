@@ -25,76 +25,31 @@ public class CardGenerator : MonoBehaviour
     {
         
     }
-    /*
-    public static string randomString(int length)
+
+    public int suitConverter(string dictionary)
     {
-        string str = "";
-        for (int i = 0; i < length; i++)
+        char x = dictionary[0];
+        switch(x)
         {
-            str += (char) ('a' + Random.Range(0, 26));
+            case 'C':
+                return 0;
+            case 'D':
+                return 1;
+            case 'H':
+                return 2;
+            case 'S':
+                return 3;
         }
-        return str;
+        return -1;
     }
-    
-    public static string randomSentence(int wordCount, int minWordLength, int maxWordLength)
+
+    public readonly static Dictionary<string, int> suitConverterDictionary = new Dictionary<string, int>()
     {
-        string str = "";
-        for(int i = 0; i < wordCount; i++)
-        {
-            if (i > 0)
-            {
-                str += " ";
-            }
-            str += randomString(Random.Range(minWordLength, maxWordLength));
-
-        }
-
-        return str;
-    }
-    */
-
-
-
-    public void suitConverter(string dictionary)
-    {
-        List<int> suitt = new List<int>();
-        for(int j = 0; j < dictionary.Length; j++)
-        {
-            char x = dictionary[j];
-            switch(x)
-            {
-                case ':':
-                case ' ':
-                case 'A':
-                case '2':
-                case '3':
-                case '4':
-                case '5':
-                case '6':
-                case '7':
-                case '8':
-                case '9':
-                case '1':
-                case 'J':
-                case 'Q':
-                case 'K':
-                    continue;
-
-                case 'C':
-                    suitt.Add(0);
-                    break;
-                case 'D':
-                    suitt.Add(1);
-                    break;
-                case 'H':
-                    suitt.Add(2);
-                    break;
-                case 'S':
-                    suitt.Add(3);
-                    break;
-            }
-        }
-    }
+        ["C"] = 0,
+        ["D"] = 1,
+        ["H"] = 2,
+        ["S"] = 3
+    };
     public void generate()
     {
         /*
@@ -115,28 +70,26 @@ public class CardGenerator : MonoBehaviour
 
         for (int i = 0; i < cards.cards.Length; i++)
         {
-
-            /*
-            for (int k = 0; k < cards.cards[i].cardCount; k++)
+            GenerateCardsFor(cards.cards[i]);
+        }
+    }
+    public void GenerateCardsFor(CardRead.CardInfo cardInfo)
+    {
+        for (int suitIndex = 0; suitIndex < cardInfo.list.Count; suitIndex++)
+        {
+            List<CardRead.CardInfo.card> cardnumbers = cardInfo.list[suitIndex].list;
+            string suit = cardInfo.list[suitIndex].suit;
+            for (int n = 0; n < cardnumbers.Count; ++n)
             {
-
-            }
-            */
-            for (int suitIndex = 0; suitIndex < cards.cards[i].list.Count; suitIndex++)
-            {
-                List<CardRead.CardInfo.card> cardnumbers = cards.cards[i].list[suitIndex].list;
-                for (int n = 0; n < cardnumbers.Count; ++n)
-                {
-                    GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
-                    GO.transform.SetParent(this.transform); // top component, make new object a child
-                    BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
-                    BC.cardName = cards.cards[i].name;
-                    BC.description = cards.cards[i].description;
-                    BC.image = images[i];
-                    BC.ApplyUI();
-                }
+                GameObject GO = Instantiate(basicCard.gameObject); // get object, not the script (script is a component)
+                GO.transform.SetParent(this.transform); // top component, make new object a child
+                BasicCard BC = GO.GetComponent<BasicCard>(); // bc references basic card rectangle
+                BC.cardName = cardInfo.name;
+                BC.description = cardInfo.description;
+                BC.image = images[suitConverter(suit)];//same as the line below
+                BC.image = images[suitConverterDictionary[suit]];
+                BC.ApplyUI();
             }
         }
-
     }
 }
