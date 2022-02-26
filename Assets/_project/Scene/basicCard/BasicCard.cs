@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 namespace cards
 {
 
-    public class BasicCard : MonoBehaviour
+    public class BasicCard : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         [ContextMenuItem("apply GUI data", nameof(ApplyUI))]
         public string cardName;
         public Sprite image;
         public Sprite icon;
         public string num;
-        [TextArea(1, 5), Tooltip("describs the card")]
+        //[TextArea(1, 5), Tooltip("describs the card")]
         public string description;
         public UnityEvent onPlay;
         public UnityEvent onExit;
@@ -163,6 +164,21 @@ namespace cards
             GetComponent<Image>().color = startingColor;
             transform.localScale = Vector3.one;
             selected = false;
+        }
+
+        //not triggered on user interface
+        public void OnMouseEnter()
+        {
+            txt_description.gameObject.SetActive(true);
+        }
+
+        public void OnPointerEnter(PointerEventData eventData)
+        {
+            txt_description.gameObject.SetActive(true);
+        }
+        public void OnPointerExit(PointerEventData eventData)
+        {
+            txt_description.gameObject.SetActive(false);
         }
     }
 }
