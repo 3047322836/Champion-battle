@@ -53,5 +53,6 @@ public class CardGameManager : MonoBehaviour
         }
 
         current = phases[phaseIndex];
+        current.onEnter.Invoke();
     }
 }

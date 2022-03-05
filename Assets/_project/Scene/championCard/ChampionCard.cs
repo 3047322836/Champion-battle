@@ -8,6 +8,8 @@ namespace cards
         [SerializeField] private int _hp = 5;
         public int maxHP = 5;
 
+        public GameObject endingSectionUI;
+
         public int hp
         {
             get
@@ -45,6 +47,8 @@ namespace cards
         protected override void Update()
         {
             base.Update();
+            endingSectionUI.SetActive(CardGameManager.Instance.current.name == "ending");
+            
         }
     }
 }
