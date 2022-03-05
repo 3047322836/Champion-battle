@@ -21,6 +21,7 @@ namespace cards
         public UnityEvent onPlay;
         public UnityEvent onExit;
         public TMP_Text txt_title, txt_description;
+        public RectTransform descriptionWindow;
         public Image img_image;
         public Image img_icon;
         public TMP_Text cardNum;
@@ -62,6 +63,10 @@ namespace cards
            if (selected)
             {
                 SelectedAnimationLogic();
+            }
+           if (descriptionWindow.gameObject.activeSelf)
+            {
+                descriptionWindow.position = Input.mousePosition;
             }
     
            
@@ -166,19 +171,13 @@ namespace cards
             selected = false;
         }
 
-        //not triggered on user interface
-        public void OnMouseEnter()
-        {
-            txt_description.gameObject.SetActive(true);
-        }
-
         public void OnPointerEnter(PointerEventData eventData)
         {
-            txt_description.gameObject.SetActive(true);
+            descriptionWindow.gameObject.SetActive(true);
         }
         public void OnPointerExit(PointerEventData eventData)
         {
-            txt_description.gameObject.SetActive(false);
+            descriptionWindow.gameObject.SetActive(false);
         }
     }
 }

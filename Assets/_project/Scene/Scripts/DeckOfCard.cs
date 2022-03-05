@@ -22,6 +22,9 @@ namespace cards
         // Start is called before the first frame update
         void Start()
         {
+            if (OriginalCards.Count == 0) {
+                return;
+            }
             for (int i = 0; i < count; i++)
             {
                 int NumB = Random.Range(0, 13);
